@@ -1,2 +1,2 @@
 # ScanClientSandbox
-Scan Client Sandbox
+Ideas for packaging scan client, https://github.com/ksdj/PyScanClient
