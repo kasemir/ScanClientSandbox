@@ -5,7 +5,7 @@ class Comment(object):
     def __init__(self, text):
         self.text = text
         
-    def __str__(self):
+    def __repr__(self):
         return "Comment \'%s\'" % self.text
 
 
@@ -18,5 +18,5 @@ class Set(object):
         self.device = device
         self.value = value
         
-    def __str__(self):
+    def __repr__(self):
         return "Set \'%s\' = %s" % (self.device, str(self.value))
