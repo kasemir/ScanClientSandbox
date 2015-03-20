@@ -44,10 +44,7 @@ class Set(object):
             need_timeout = True
         if self.readback:
             ET.SubElement(xml, "wait").text = "true"
-            if self.readback == True:
-                ET.SubElement(xml, "readback").text = self.device
-            else:
-                ET.SubElement(xml, "readback").text = self.readback
+            ET.SubElement(xml, "readback").text = self.device if self.readback == True else self.readback
             ET.SubElement(xml, "tolerance").text = str(self.tolerance)
             need_timeout = True
         if need_timeout  and  self.timeout > 0:
