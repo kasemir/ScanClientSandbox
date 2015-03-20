@@ -35,11 +35,11 @@ class CommandTest(unittest.TestCase):
 
         cmd = Set("some_device", 3.14, completion=True, readback=True, tolerance=1, timeout=10.0)
         print cmd
-        self.assertEqual(cmd.genXML(), "<set><device>some_device</device><value>3.14</value><completion>true</completion><readback>some_device</readback><tolerance>1</tolerance><timeout>10.0</timeout></set>")
+        self.assertEqual(cmd.genXML(), "<set><device>some_device</device><value>3.14</value><completion>true</completion><wait>true</wait><readback>some_device</readback><tolerance>1</tolerance><timeout>10.0</timeout></set>")
 
         cmd = Set("some_device", 3.14, completion=True, readback="some_device.RBV", tolerance=1, timeout=10.0)
         print cmd
-        self.assertEqual(cmd.genXML(), "<set><device>some_device</device><value>3.14</value><completion>true</completion><readback>some_device.RBV</readback><tolerance>1</tolerance><timeout>10.0</timeout></set>")
+        self.assertEqual(cmd.genXML(), "<set><device>some_device</device><value>3.14</value><completion>true</completion><wait>true</wait><readback>some_device.RBV</readback><tolerance>1</tolerance><timeout>10.0</timeout></set>")
 
 
 if __name__ == "__main__":
