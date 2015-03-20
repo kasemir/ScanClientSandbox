@@ -4,4 +4,3 @@ scan_client_version = "0.1"
 
 from client import *
 from commands import *
-
