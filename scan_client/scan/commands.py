@@ -21,8 +21,8 @@ class Set(object):
        @param value: Value
        @param completion: Await completion?
        @param readback: False to not check any readback.
-                        True to wait for readback from the device,
-                        or name of readback device different from readback.
+                        True to wait for readback from the 'device',
+                        or name of specific readback different from 'device'.
        @param tolerance: Readback tolerance
        @param timeout: Timeout in seconds, used for completion and readback check
     """
