@@ -11,15 +11,35 @@ class CommandTest(unittest.TestCase):
     def testXML(self):
         # Basic comment
         cmd = Comment("Hello")
+        print cmd
         self.assertEqual(cmd.genXML(), "<comment><text>Hello</text></comment>")
 
         # Check proper escape of "less than"
         cmd = Comment("Check for current < 10")
+        print cmd
         self.assertEqual(cmd.genXML(), "<comment><text>Check for current &lt; 10</text></comment>")
 
-        # Basic comment
+        # Basic set
         cmd = Set("some_device", 3.14)
+        print cmd
         self.assertEqual(cmd.genXML(), "<set><device>some_device</device><value>3.14</value></set>")
+
+        # .. more options
+        cmd = Set("some_device", 3.14, completion=True)
+        print cmd
+        self.assertEqual(cmd.genXML(), "<set><device>some_device</device><value>3.14</value><completion>true</completion></set>")
+
+        cmd = Set("some_device", 3.14, completion=True, timeout=5.0)
+        print cmd
+        self.assertEqual(cmd.genXML(), "<set><device>some_device</device><value>3.14</value><completion>true</completion><timeout>5.0</timeout></set>")
+
+        cmd = Set("some_device", 3.14, completion=True, readback=True, tolerance=1, timeout=10.0)
+        print cmd
+        self.assertEqual(cmd.genXML(), "<set><device>some_device</device><value>3.14</value><completion>true</completion><readback>some_device</readback><tolerance>1</tolerance><timeout>10.0</timeout></set>")
+
+        cmd = Set("some_device", 3.14, completion=True, readback="some_device.RBV", tolerance=1, timeout=10.0)
+        print cmd
+        self.assertEqual(cmd.genXML(), "<set><device>some_device</device><value>3.14</value><completion>true</completion><readback>some_device.RBV</readback><tolerance>1</tolerance><timeout>10.0</timeout></set>")
 
 
 if __name__ == "__main__":
